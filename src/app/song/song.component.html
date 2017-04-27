@@ -1,0 +1,6 @@
+<div class="row">
+  <div class="col-md-12">
+    <p *ngIf="song" [innerHTML]="song.lyrics | safeHtml" [style.fontSize.em]="fontSize">
+    </p>
+  </div>
+</div>

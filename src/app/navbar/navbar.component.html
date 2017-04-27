@@ -1,0 +1,94 @@
+<nav class="navbar navbar-default">
+	<div class="container-fluid">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+		<span class="sr-only">Toggle navigation</span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+	  </button>
+			<a class="navbar-brand" [routerLink]="['/']">{{title}}</a>
+		</div>
+
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav navbar-left">
+        <li>
+          <a class="btn" *ngIf="!loggedIn()" [href]="loginLink">Prihlásiť sa</a>
+        </li>
+        <li>
+          <a class="btn" (click)=logout() *ngIf="loggedIn()">Odhlásiť sa</a>
+        </li>
+      </ul>
+
+			<form class="navbar-form navbar-left">
+				<div class="form-group">
+					<button *ngIf="showButtonSongList" [routerLink]="['/zoznam']" class="btn btn-primary btn-sm" type="button">
+						<i class="fa fa-list" aria-hidden="true"></i>
+						Piesne
+					</button>
+					<button *ngIf="showButtonPlaylistList" [routerLink]="['/zoznam/zoznampiesni/']" class="btn btn-primary btn-sm" type="button">
+						<i class="fa fa-list" aria-hidden="true"></i>
+						Zoznamy piesní
+					</button>
+				</div>
+			</form>
+			<form class="navbar-form navbar-left">
+				<div class="form-group">
+					<button *ngIf="showButtonAddSong" [routerLink]="['/pridat/piesen']" class="btn btn-primary btn-sm" type="button">
+						<i class="fa fa-plus" aria-hidden="true"></i>
+						Pridať novú pieseň
+					</button>
+					<button *ngIf="showButtonAddPlaylist" [routerLink]="['/pridat/zoznampiesni']" class="btn btn-primary btn-sm" type="button">
+						<i class="fa fa-plus" aria-hidden="true"></i>
+						Pridať nový zoznam piesní
+					</button>
+					<button *ngIf="showButtonEditSong" [routerLink]="['/upravit/piesen/', currSongId]" class="btn btn-primary btn-sm" type="button">
+						<i class="fa fa-pencil" aria-hidden="true"></i>
+						Upraviť pieseň
+					</button>
+					<button *ngIf="showButtonEditPlaylist" [routerLink]="['/upravit/zoznampiesni/', currPlaylistId]" class="btn btn-primary btn-sm" type="button">
+						<i class="fa fa-pencil" aria-hidden="true"></i>
+						Upraviť zoznam piesní
+					</button>
+					<button *ngIf="showButtonBackToSong" [routerLink]="['/zobrazit/piesen/', currSongId]" class="btn btn-primary btn-sm" type="button">
+						<i class="fa fa-pencil" aria-hidden="true"></i>
+						Späť na pieseň
+					</button>
+
+					<div *ngIf="showSongManipulators" class="song-manipulators">
+						<div class="btn-group btn-group-sm" role="group" aria-label="Transpozícia">
+							<span class="btn">Transpozícia</span>
+							<button type="button" id="transpose-up" class="btn btn-info" (click)="transpose('up')"><i class="fa fa-plus" aria-hidden="true"></i> 1</button>
+							<button type="button" id="transpose-down" class="btn btn-info" (click)="transpose('down')"><i class="fa fa-minus" aria-hidden="true"></i> 1</button>
+						</div>
+
+						<div class="btn-group btn-group-sm" role="group" aria-label="Veľkosť textu">
+							<span class="btn">Text</span>
+							<button type="button" id="text-plus-font" class="btn btn-info" (click)="changeFontSize('plus')"><i class="fa fa-plus" aria-hidden="true"></i></button>
+							<button type="button" id="text-minus-font" class="btn btn-info" (click)="changeFontSize('minus')"><i class="fa fa-minus" aria-hidden="true"></i></button>
+						</div>
+
+						<div class="btn-group btn-group-sm" role="group" aria-label="Veľkosť akordov">
+							<span class="btn">Akordy</span>
+							<button type="button" id="chord-plus-font" class="btn btn-info" (click)="changeChordSize('plus')"><i class="fa fa-plus" aria-hidden="true"></i></button>
+							<button type="button" id="chord-minus-font" class="btn btn-info" (click)="changeChordSize('minus')"><i class="fa fa-minus" aria-hidden="true"></i></button>
+						</div>
+
+					</div>
+				</div>
+			</form>
+
+			<div *ngIf="showSearchbar" class="navbar-form navbar-right form-group">
+
+				<div class="input-group">
+		      <div class="input-group-addon">Hľadať názov, autora, tagy</div>
+		      <input type="text" class="form-control" [(ngModel)]="searchTerm" (ngModelChange)="onSearchTermChange($event)" placeholder="Hľadať ...">
+		    </div>
+			</div>
+		</div>
+		<!-- /.navbar-collapse -->
+	</div>
+	<!-- /.container-fluid -->
+</nav>

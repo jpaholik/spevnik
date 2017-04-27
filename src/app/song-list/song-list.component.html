@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-md-12">
+    <table *ngIf="songs != undefined" id="songList" class="table table-hover table-striped">
+      <thead>
+        <tr>
+          <th>Názov</th>
+          <th>Interpret</th>
+          <th>Tagy</th>
+          <th>Akcie</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let song of songs | filter: searchTerm">
+          <td><a [routerLink]="['/zobrazit/piesen', song.id]">{{ song.title }}</a></td>
+          <td>{{ song.artist }}</td>
+          <td>{{ song.tags }}</td>
+          <td>
+            <button title="Zobraziť pieseň" class="btn btn-sm btn-primary" type="button" [routerLink]="['/zobrazit/piesen', song.id]">
+              <i class="fa fa-eye" aria-hidden="true"></i>
+            </button>
+            <button *ngIf="authService.loggedIn()" title="Upraviť pieseň" class="btn btn-sm btn-primary" type="button" [routerLink]="['/upravit/piesen', song.id]">
+              <i class="fa fa-pencil" aria-hidden="true"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p *ngIf="songs == undefined">Načítavam ...</p>
+  </div>
+</div>

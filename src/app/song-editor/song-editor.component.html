@@ -1,0 +1,54 @@
+<div class="row">
+  <div class="col-md-7">
+    <form [formGroup]="formGroup" novalidate>
+      <div class="form-group">
+        <label class="center-block">Názov</label>
+        <input class="form-control" formControlName="title">
+      </div>
+      <div class="form-group">
+        <label class="center-block">Interpret</label>
+        <input class="form-control" formControlName="artist">
+      </div>
+      <div class="form-group">
+        <label class="center-block">Text</label>
+        <textarea class="form-control" formControlName="lyrics" rows=15></textarea>
+      </div>
+      <div class="form-group">
+        <label class="center-block">Tagy</label>
+        <input class="form-control" formControlName="tags">
+      </div>
+    </form>
+    <button type="button" (click)="update()" class="btn btn-primary">Uložiť</button>
+  </div>
+  <div class="col-md-5">
+    <h4>Pokyny a príklady</h4>
+
+    <ul>
+      <li>Akordy sa píšu do hviezdičiek</li>
+      <ul>
+        <li style="color: #1abc9c;">Správne zapísaný akord G dur: *G*</li>
+        <li style="color: #c9302c;">Nesprávne zapísaný akord G dur: *Gdur*</li>
+        <li style="color: #c9302c;">Nesprávne zapísaný akord G dur: *G</li>
+      </ul>
+      <li>Molové akordy sa píšu s malým písmenom a bez prípony "mi"</li>
+      <ul>
+        <li style="color: #1abc9c;">Správne zapísaný akord e mol: *e*</li>
+        <li style="color: #c9302c;">Nesprávne zapísaný akord e mol: *emi*</li>
+        <li style="color: #c9302c;">Nesprávne zapísaný akord e mol: *Emi*</li>
+      </ul>
+      <li>Zvýšené akordy sa píšu pomocou prípony "is" (nie pomocou krížika), znížené akordy sa zapisujú pomocou zvýšených</li>
+      <ul>
+        <li style="color: #1abc9c;">Správne zapísaný akord Dis dur: *Dis*</li>
+        <li style="color: #1abc9c;">Správne zapísaný akord Des dur: *Cis*</li>
+        <li style="color: #c9302c;">Nesprávne zapísaný akord Gis dur: *G#*</li>
+      </ul>
+      <li>Odtiene akordov sa píšu za zvislú čiaru |</li>
+      <ul>
+        <li style="color: #1abc9c;">Správne zapísaný akord D maj7: *D|maj7*</li>
+        <li style="color: #1abc9c;">Správne zapísaný akord fis mol7: *fis|7*</li>
+        <li style="color: #c9302c;">Nesprávne zapísaný akord e mol7: *e7*</li>
+      </ul>
+    </ul>
+
+  </div>
+</div>

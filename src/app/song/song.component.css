@@ -1,0 +1,21 @@
+/deep/ #notes {
+	line-height: 2em;
+}
+
+/deep/ sup.chord-main {
+    color: #446CB3;
+    font-size: 1.6em;
+    top: -.5em;
+    position: relative;
+}
+
+/deep/ sup.chord {
+    color: #48c9b0;
+    font-size: 1.6em;
+    top: -.5em;
+    position: relative;
+}
+
+/deep/ p {
+	line-height: 3em;
+}

@@ -1,0 +1,26 @@
+<form [formGroup]="formGroup" novalidate>
+  <div class="form-group">
+    <label class="center-block">Názov zoznamu piesní</label>
+    <input class="form-control" formControlName="name">
+  </div>
+  <div formArrayName="songs">
+    <div *ngFor="let song of songs.controls; let i=index" [formGroupName]="i">
+      <div class="form-group form-inline">
+        <input class="form-control" formControlName="title" placeholder="Názov piesne" disabled>
+        <button type="button" class="btn btn-primary btn-sm" (click)="removeSong(i)"><i class="fa fa-times" aria-hidden="true"></i></button>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <button type="button" class="btn btn-primary" (click)="save()">Uložiť</button>
+  </div>
+</form>
+
+<auto-complete
+  [(ngModel)]="newSongInput"
+  [list]="allSongs"
+  [searchProperty]="'title'" [displayProperty]="'title'"
+  [maxSuggestions]="-1"
+  (suggestionSelected)="songSelected($event)"
+  placeholder="Začnite písať názov piesne">
+</auto-complete>
